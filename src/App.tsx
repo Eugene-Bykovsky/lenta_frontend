@@ -1,19 +1,24 @@
 import './styles.css'
-import pic from './asset/logo.jpeg'
-import cat from './asset/cat.svg'
-import { Counter } from './counter'
+// import pic from './asset/logo.jpeg'
+// import cat from './asset/cat.svg'
+import { useAppDispatch } from './hooks'
+import { useEffect } from 'react'
+import { fetchUsers } from './components/features/users/userSlice'
+import { Users } from './components/features/users/users'
 
 function App() {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchUsers())
+  }, [dispatch])
+
   return (
     <>
-      <h1>
-        Lenta
-        {/* {process.env.NODE_ENV}
-        {process.env.name} */}
-      </h1>
-      <img src={pic} alt="logo" width="300" />
-      <img src={cat} alt="cat" width="300" />
-      <Counter />
+      <h1>Lenta</h1>
+      {/* <img src={pic} alt="logo" width="300" />
+      <img src={cat} alt="cat" width="300" /> */}
+      <Users />
     </>
   )
 }
