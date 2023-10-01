@@ -51,12 +51,17 @@ const salesKey = {
   sales_rub: 6.7,
   sales_run_promo: 8.9,
 }
-
 export type TSalesKey = typeof salesKey
 
+export type TsalesDataStore = {
+  store: string
+  sku: string
+  fact: TSalesKey[]
+}
+
 export type TsalesData = {
-  store: 'store1'
-  sku: 'sku1'
+  store: string
+  sku: string
   fact: TSalesKey[]
 }[]
 
@@ -137,3 +142,160 @@ export type TGetSalesForecasts = {
 //    }
 //  ]
 // }
+
+export const dataForTestTable: TsalesData = [
+  {
+    store: 'store1',
+    sku: 'sku1',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+  {
+    store: 'store2',
+    sku: 'sku1',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+  {
+    store: 'store2',
+    sku: 'sku2',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+  {
+    store: 'store2',
+    sku: 'sku3',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+  {
+    store: 'store4',
+    sku: 'sku1',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+  {
+    store: 'store6',
+    sku: 'sku45',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+  {
+    store: 'store7',
+    sku: 'sku2',
+    fact: [
+      {
+        date: '2023-01-15',
+        sales_type: 0,
+        sales_units: 5,
+        sales_units_promo: 4,
+        sales_rub: 6.7,
+        sales_run_promo: 8.9,
+      },
+      {
+        date: '2023-01-16',
+        sales_type: 0,
+        sales_units: 2,
+        sales_units_promo: 6,
+        sales_rub: 9.6,
+        sales_run_promo: 3.4,
+      },
+    ],
+  },
+]
