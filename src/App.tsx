@@ -1,27 +1,32 @@
 import './styles.css'
-// import pic from './asset/logo.jpeg'
-// import cat from './asset/cat.svg'
 import { useAppDispatch } from './hooks'
 import { useEffect } from 'react'
-import { fetchUsers } from './components/features/users/userSlice'
-import { Users } from './components/features/users/users'
+import { fetchForecast } from './features/table-forecast/forecastSlice'
 import { SalesTable } from './components/sales-table/SalesTable'
+import Header from './components/header/Header'
+import Global from './global'
+import Footer from './components/footer/Footer'
+import { TableForecast } from './features/table-forecast/TableForecast'
+import { Route, Routes } from 'react-router-dom'
+import { NotFound404 } from './pages/NotFound404'
 
 function App() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchUsers())
+    dispatch(fetchForecast())
   }, [dispatch])
-
   return (
     <>
-      <h1>Lenta</h1>
-      {/* <img src={pic} alt="logo" width="300" />
-      <img src={cat} alt="cat" width="300" /> */}
+      <Global />
+      <Header />
 
-      <Users />
-      <SalesTable />
+      <Routes>
+        <Route path="/" element={<SalesTable />} />
+        <Route path="/forecast" element={<TableForecast />} />
+        <Route path="*" element={<NotFound404 />} />
+      </Routes>
+      <Footer />
     </>
   )
 }

@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 // import axios from 'axios'
-import { userReducer } from './components/features/users/userSlice'
+import { forecastReducer } from './features/table-forecast/forecastSlice'
 // import * as api from './services/api'
 
 export const store = configureStore({
   reducer: {
-    users: userReducer,
+    forecast: forecastReducer,
   },
   devTools: true,
   // middleware: (getDefaultMiddlware) =>

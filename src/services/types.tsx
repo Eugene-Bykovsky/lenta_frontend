@@ -1,31 +1,3 @@
-//data to check state manager
-
-const user = {
-  id: 1,
-  name: 'Leanne Graham',
-  username: 'Bret',
-  email: 'Sincere@april.biz',
-  address: {
-    street: 'Kulas Light',
-    suite: 'Apt. 556',
-    city: 'Gwenborough',
-    zipcode: '92998-3874',
-    geo: {
-      lat: '-37.3159',
-      lng: '81.1496',
-    },
-  },
-  phone: '1-770-736-8031 x56442',
-  website: 'hildegard.org',
-  company: {
-    name: 'Romaguera-Crona',
-    catchPhrase: 'Multi-layered client-server neural-net',
-    bs: 'harness real-time e-markets',
-  },
-}
-export type TUser = typeof user
-//*****/
-
 // Lenta data types
 // get, /categories
 // Возвращает товарную иерархию.
@@ -64,6 +36,13 @@ export type TsalesData = {
   sku: string
   fact: TSalesKey[]
 }[]
+
+export type TApiForecast = {
+  count: number
+  next: string
+  previous: null
+  results: TsalesData
+}
 
 // ### get, /shops
 // возвращает список ТЦ. Можно добавить фильтры по полям (например, тип, локация, др). Формат ответа:
@@ -299,3 +278,40 @@ export const dataForTestTable: TsalesData = [
     ],
   },
 ]
+
+//продажы типазация на базе ручек
+//sales
+export type TSchemaSalesResults = {
+  id: number
+  date: string
+  pr_sales_type_id: boolean
+  pr_sales_in_units: number
+  pr_promo_sales_in_units: number
+  pr_sales_in_rub: number
+  pr_promo_sales_in_rub: number
+  pr_sku_id: string
+  st_id: string
+}
+
+export type TSchemaSales = {
+  count: number
+  next: string
+  previous: string
+  results: TSchemaSalesResults[]
+}
+
+//forecasts
+export type TSchemaForecastsResults = {
+  id: number
+  date: string
+  target: string
+  st_id: string
+  pr_sku_id: string
+}
+
+export type TSchemaForecasts = {
+  count: number
+  next: string
+  previous: string
+  results: TSchemaForecastsResults[]
+}

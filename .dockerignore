@@ -1,11 +1,3 @@
 node_modules
 Dockerfile
 .git
-.gitignore
-.idea
-.DS_Store
-README.md
-
-app/.parcel-cache/
-app/dist/
-docker-compose.yml

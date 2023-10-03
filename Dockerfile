@@ -17,9 +17,11 @@
 # CMD cp -r build result_build
 
 FROM node
-WORKDIR /app/front
-COPY . .
+WORKDIR /app
+COPY package.json /app
 RUN npm install
-# CMD ["node", "index.js"]
-CMD ["npm", "start"]
-# EXPOSE 8080
+COPY . .
+
+EXPOSE 8080
+# CMD ["npm", "start"]
+CMD ["npm","run", "start"]
