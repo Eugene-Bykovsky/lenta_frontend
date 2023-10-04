@@ -1,15 +1,37 @@
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Polygon } from '../UI/Icons/Polygon'
 
-export const Container = styled.div<{
-  open: boolean
-}>`
+export const PolygonImgContainer = styled.div<{ item: string }>`
+  margin-bottom: -4px;
+  ${({ item }) =>
+    item === 'LogIn' &&
+    css`
+      svg {
+        padding-right: 40px;
+      }
+    `}
+`
+
+export const PolygonImg = styled(Polygon)``
+
+export const Container = styled.div<{ open: boolean; item: string }>`
   position: fixed;
-  margin-top: 25px;
+  margin-top: 21px;
+
   display: ${({ open }) => (open ? 'flex' : 'none')};
   flex-direction: column;
   align-items: center;
+
+  ${({ item }) =>
+    item === 'LogIn' &&
+    css`
+      align-items: end;
+
+      // &:nth-child(1) {
+      //   margin-top: 100px;
+      // }
+    `}
 `
 
 export const ReportsDropDown = styled.div`
@@ -32,4 +54,3 @@ export const MenuLink = styled(Link)`
     color: var(--color-grey-2);
   }
 `
-export const PolygonImg = styled(Polygon)``

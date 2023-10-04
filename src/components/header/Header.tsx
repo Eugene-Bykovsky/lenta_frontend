@@ -2,6 +2,7 @@ import {
   DropdownButton,
   HeaderDiv,
   IconOpenDwn,
+  IconUser,
   LogoImage,
   MenuDown,
   Reports,
@@ -11,7 +12,7 @@ import { useEffect, useRef, useState } from 'react'
 import MenuHeader from '../menu-header/MenuHeader'
 
 export default function Header() {
-  const arr = ['Прогнозы', 'Отчеты', 'Справочники']
+  const arr = ['Прогнозы', 'Отчеты', 'Справочники', 'LogIn']
   const [reports, setReports] = useState<number | false>(false)
   const menuRefs = useRef<(HTMLDivElement | null)[]>([])
 
@@ -49,9 +50,18 @@ export default function Header() {
             key={inx}
             ref={(el: HTMLDivElement | null) => (menuRefs.current[inx] = el)}
           >
-            <DropdownButton onClick={() => handleOpenReports(inx)}>
-              {item} <IconOpenDwn />
-            </DropdownButton>
+            {item !== 'LogIn' && (
+              <DropdownButton onClick={() => handleOpenReports(inx)}>
+                {item} <IconOpenDwn />
+              </DropdownButton>
+            )}
+
+            {item === 'LogIn' && (
+              <DropdownButton onClick={() => handleOpenReports(inx)}>
+                <IconUser />
+                Инга Р.
+              </DropdownButton>
+            )}
             <MenuHeader open={reports === inx ? true : false} item={item} />
           </MenuDown>
         ))}
