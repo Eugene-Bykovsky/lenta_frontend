@@ -104,6 +104,7 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
             item.name === 'Выход' ? (
               <MenuLink
                 key={item.name}
+                item={item.name}
                 to={item.link}
                 onClick={() => onCloseReports(false)}
               >

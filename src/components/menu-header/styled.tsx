@@ -36,14 +36,14 @@ export const ReportsDropDown = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  gap: 10px;
+  gap: 25px;
 
   background: var(--color-white);
   border-radius: 16px;
   box-shadow: var(--custom-box-shadow);
 `
 
-export const MenuLink = styled(Link)`
+export const MenuLink = styled(Link)<{ item: string }>`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,6 +55,17 @@ export const MenuLink = styled(Link)`
   &:hover {
     color: var(--color-grey-2);
   }
+
+  ${({ item }) =>
+    item === 'Выход' &&
+    css`
+      padding-top: 10px;
+      border-top: solid 1px #898997;
+      color: var(--color-grey-2);
+      &:hover {
+        color: var(--color-black);
+      }
+    `};
 `
 
 export const ExitIcon = styled(Exit)``
