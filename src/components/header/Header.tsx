@@ -62,7 +62,11 @@ export default function Header() {
                 Инга Р.
               </DropdownButton>
             )}
-            <MenuHeader open={reports === inx ? true : false} item={item} />
+            <MenuHeader
+              open={reports === inx ? true : false}
+              item={item}
+              onCloseReports={setReports}
+            />
           </MenuDown>
         ))}
       </Reports>

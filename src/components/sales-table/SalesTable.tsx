@@ -10,10 +10,10 @@ import {
 const columnHelper = createColumnHelper<TsalesDataStore>()
 
 const columns = [
-  columnHelper.accessor('store', {
-    cell: (info) => info.getValue(),
-    footer: (info) => info.column.id,
-  }),
+  // columnHelper.accessor('store', {
+  //   cell: (info) => info.getValue(),
+  //   footer: (info) => info.column.id,
+  // }),
   columnHelper.accessor('sku', {
     header: 'sku [product id]',
     footer: (info) => info.column.id,
@@ -26,7 +26,7 @@ const columns = [
 
 export const SalesTable = () => {
   const [data] = useState(() => [...dataForTestTable])
-  // const rerender = useReducer(() => ({}), {})[1]
+  console.log(2, data)
 
   const table = useReactTable({
     data,

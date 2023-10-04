@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
+import { Exit } from '../UI/Icons/Exit'
 import { Polygon } from '../UI/Icons/Polygon'
 
 export const PolygonImgContainer = styled.div<{ item: string }>`
-  margin-bottom: -4px;
+  margin-bottom: -7px;
   ${({ item }) =>
     item === 'LogIn' &&
     css`
@@ -27,10 +28,6 @@ export const Container = styled.div<{ open: boolean; item: string }>`
     item === 'LogIn' &&
     css`
       align-items: end;
-
-      // &:nth-child(1) {
-      //   margin-top: 100px;
-      // }
     `}
 `
 
@@ -47,10 +44,21 @@ export const ReportsDropDown = styled.div`
 `
 
 export const MenuLink = styled(Link)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  juctify-content: center;
+  gap: 10px;
   text-decoration: none;
   color: var(--color-black);
 
   &:hover {
     color: var(--color-grey-2);
   }
+`
+
+export const ExitIcon = styled(Exit)``
+
+export const ExitBox = styled.div`
+  border-top: 1px solid black;
 `

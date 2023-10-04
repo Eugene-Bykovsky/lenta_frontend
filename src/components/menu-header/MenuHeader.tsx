@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import {
   Container,
+  ExitIcon,
   MenuLink,
   PolygonImg,
   PolygonImgContainer,
@@ -10,8 +11,9 @@ import {
 interface IProps {
   open: boolean
   item: string
+  onCloseReports: (value: number | false) => void
 }
-const MenuHeader: FC<IProps> = ({ open, item }) => {
+const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
   const forecastMenu = [
     {
       name: 'Статистика по прогнозам',
@@ -33,8 +35,8 @@ const MenuHeader: FC<IProps> = ({ open, item }) => {
       link: 'forecast_statistics',
     },
     {
-      name: 'SCU',
-      link: 'scu',
+      name: 'SKU',
+      link: 'sku',
     },
     {
       name: 'Цены',
@@ -74,25 +76,50 @@ const MenuHeader: FC<IProps> = ({ open, item }) => {
       <ReportsDropDown>
         {item === 'Прогнозы' &&
           forecastMenu.map((item) => (
-            <MenuLink key={item.name} to={item.link}>
+            <MenuLink
+              key={item.name}
+              to={item.link}
+              onClick={() => onCloseReports(false)}
+            >
               {item.name}
             </MenuLink>
           ))}
         {item === 'Отчеты' && (
-          <MenuLink to="soon">В процессе разработки...</MenuLink>
+          <MenuLink to="soon" onClick={() => onCloseReports(false)}>
+            В процессе разработки...
+          </MenuLink>
         )}
         {item === 'Справочники' &&
           referencуBooks.map((item) => (
-            <MenuLink key={item.name} to={item.link}>
+            <MenuLink
+              key={item.name}
+              to={item.link}
+              onClick={() => onCloseReports(false)}
+            >
               {item.name}
             </MenuLink>
           ))}
         {item === 'LogIn' &&
-          logIn.map((item) => (
-            <MenuLink key={item.name} to={item.link}>
-              {item.name}
-            </MenuLink>
-          ))}
+          logIn.map((item) =>
+            item.name === 'Выход' ? (
+              <MenuLink
+                key={item.name}
+                to={item.link}
+                onClick={() => onCloseReports(false)}
+              >
+                <ExitIcon />
+                {item.name}
+              </MenuLink>
+            ) : (
+              <MenuLink
+                key={item.name}
+                to={item.link}
+                onClick={() => onCloseReports(false)}
+              >
+                {item.name}
+              </MenuLink>
+            )
+          )}
       </ReportsDropDown>
     </Container>
   )

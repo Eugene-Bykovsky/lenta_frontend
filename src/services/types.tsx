@@ -101,13 +101,6 @@ export type TPostSalesForecasts = {
 // ### **get, /forecast**
 // возвращает спрогнозированные значения для данного товара и данного ТЦ из сохранённых в базу значений.
 
-export type TGetSalesForecasts = {
-  store: string
-  sku: string
-  forecast_date: string
-  forecast: Record<string, number>
-}[]
-
 // {"data": [
 //   {"store": "sdf23",
 //    "sku": "dsf345",
@@ -300,18 +293,34 @@ export type TSchemaSales = {
   results: TSchemaSalesResults[]
 }
 
-//forecasts
-export type TSchemaForecastsResults = {
+//* * forecasts * *//
+export type TForecastsResults = {
   id: number
   date: string
-  target: string
+  target: number
   st_id: string
   pr_sku_id: string
 }
 
-export type TSchemaForecasts = {
+export type TGetForecasts = {
   count: number
   next: string
   previous: string
-  results: TSchemaForecastsResults[]
+  results: TForecastsResults[]
+}
+
+//* * category * *//
+export type TCategory = {
+  pr_cat_id: string
+  pr_group_id: string
+  pr_sku_id: string
+  pr_subcat_id: string
+  pr_uom_id: number
+}
+
+export type TGetCategory = {
+  count: number
+  next: string
+  previous: string | null
+  results: TCategory[]
 }

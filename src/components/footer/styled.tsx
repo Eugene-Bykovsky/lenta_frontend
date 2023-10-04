@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+// export const LogoFooter = styled(logo)``
+
 export const FooterDiv = styled.footer`
   max-width: 1920px;
   height: 136px;
@@ -17,6 +19,7 @@ export const FooterDiv = styled.footer`
 `
 
 export const Contacts = styled.div`
+  color: var(--color-grey-4);
   padding-right: 80px;
   margin-left: auto;
   display: flex;
@@ -31,9 +34,9 @@ export const PhoneCode = styled.div`
 `
 
 export const Phone = styled.span`
-  font-weight: var(--fw-700);
   font-size: var(--fs-22);
   line-height: var(--line-height-24);
+  font-family: var(--ff-bold);
 `
 
 export const Telegram = styled.img`
@@ -42,4 +45,18 @@ export const Telegram = styled.img`
 
 export const PhoneIcon = styled.img`
   margin-right: 10px;
+`
+export const LogoFooter = styled.img`
+  margin-left: 80px;
+  max-height: 40px;
+`
+
+export const InfoFooter = styled.img`
+  margin-left: 20px;
+`
+
+export const LentaContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
 `

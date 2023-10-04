@@ -8,9 +8,10 @@ export const ErrorPage = styled.div`
   justify-content: center;
 `
 
-export const ErrorMessage = styled.p`
-  margin: 60px 0 40px 0;
+export const ErrorMessage = styled.h1`
+  margin: 60px 0 30px 0;
   font-size: var(--fs-30);
+  font-family: var(--ff-bold);
 `
 
 export const ErrorExit = styled.p`
@@ -20,15 +21,17 @@ export const ErrorExit = styled.p`
 `
 
 export const Button = styled.button`
-  padding: 12px;
+  padding: 14px;
+
   cursor: pointer;
 
-  font-weight: var(--fw-400);
   font-size: var(--fs-14);
   line-height: var(--line-height-17);
+  font-family: var(--ff-primary);
 
   background-color: var(--color-blue-1);
   color: white;
+  border: none;
   border-radius: 16px;
 
   &: hover {

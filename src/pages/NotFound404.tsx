@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import { Button, ErrorExit, ErrorMessage, ErrorPage } from './styled'
-import logo from '../asset/error_page.jpg'
+import logo from '../asset/404.png'
 
 export function NotFound404() {
   const navigate = useNavigate()
