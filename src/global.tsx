@@ -50,6 +50,11 @@ const Global = createGlobalStyle`
     --color-yellow-2: #FECE00;
 		--color-white: #FFFFFF;
 
+    --color-hover: #296B1E;
+
+
+    
+
     --color-table-Gr: #F1F3F9;
     --color-table-Gr-light: #F8F9FC;
 
@@ -106,6 +111,9 @@ const Global = createGlobalStyle`
     background-color: var(--color-white);
     color: var(--color-black);
 
+    a:hover {
+      color: var(--color-hover);
+    }
 
 
   }
