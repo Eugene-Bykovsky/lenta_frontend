@@ -5,7 +5,7 @@ import {
   ButtonRemoveFilters,
   ButtonSearch,
 } from '../../components/UI/button/ButtonUI'
-import Selector from '../../components/UI/selector/Selector'
+import CustomSelect from '../../components/UI/selector/CustomSelect'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { fetchCategory, fetchForecast } from './forecastSlice'
 import { FilterBlock, ForecastContainer, Header, Selectors } from './styled'
@@ -44,7 +44,7 @@ export const TableForecast = () => {
       <FilterBlock>
         <Selectors>
           {filterTxt.map((item) => (
-            <Selector key={item} text={item} />
+            <CustomSelect key={item} text={item} />
           ))}
         </Selectors>
         <ButtonSearch />
@@ -56,6 +56,7 @@ export const TableForecast = () => {
       {loading && <div>Loading.....</div>}
       {error && <div>{error}</div>}
       {!loading && !error && <Table forecastTable={forecastTable} />}
+      {/* <CustomSelect /> */}
     </ForecastContainer>
   )
 }

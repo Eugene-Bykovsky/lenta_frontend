@@ -1,8 +1,9 @@
 import styled from 'styled-components'
-import { Arrow } from '../UI/Icons/Arrow'
+import { ArrowWhite } from '../UI/Icons/ArrowWhite'
+
 import { User } from '../UI/Icons/User'
 
-export const IconOpenDwn = styled(Arrow)``
+export const IconOpenDwn = styled(ArrowWhite)``
 export const IconUser = styled(User)``
 
 export const HeaderDiv = styled.header`

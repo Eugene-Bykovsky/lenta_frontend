@@ -29,6 +29,7 @@ export const Container = styled.div<{ open: boolean; item: string }>`
     css`
       align-items: end;
     `}
+  z-index: 2;
 `
 
 export const ReportsDropDown = styled.div`
@@ -60,15 +61,29 @@ export const MenuLink = styled(Link)<{ item: string }>`
     item === 'Выход' &&
     css`
       padding-top: 10px;
-      border-top: solid 1px #898997;
+      align-items: end;
       color: var(--color-grey-2);
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 68%;
+        left: 0;
+        right: 0;
+        border-top: solid 2px var(--color-grey-3);
+      }
+
       &:hover {
         color: var(--color-black);
       }
     `};
 `
 
-export const ExitIcon = styled(Exit)``
+export const ExitIcon = styled(Exit)`
+  &:hover {
+    opacity: 0.33;
+  }
+`
 
 export const ExitBox = styled.div`
   border-top: 1px solid black;
