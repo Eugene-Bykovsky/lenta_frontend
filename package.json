@@ -2,6 +2,7 @@
   "name": "lenta",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://Jane-Doe666.github.io",
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve --config webpack/webpack.config.js --env env=dev",
