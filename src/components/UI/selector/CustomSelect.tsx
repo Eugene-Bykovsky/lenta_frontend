@@ -51,10 +51,7 @@ const CustomSelect: FC<TProps> = ({ text, options }) => {
                 className={option.value === selectedOption ? 'selected' : ''}
               >
                 {option.value}
-                {
-                  option.value === selectedOption
-                  // && (<Checkmark>&#10003;</Checkmark>)
-                }
+                {option.value === selectedOption}
               </DropdownItem>
             ))}
           </Dropdown>

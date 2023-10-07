@@ -84,7 +84,7 @@ export const Table: FC<TForecastTableProps> = ({ forecastTable }) => {
     })
   }
 
-  const dateColumns = generateDateColumns(30)
+  const dateColumns = generateDateColumns(20)
 
   const columns = [
     columnHelper.accessor('filter', {

@@ -5,9 +5,11 @@ export const ForecastContainer = styled.div`
   margin: auto;
 `
 export const Header = styled.h1`
+  margin-top: 60px;
   font-weight: var(--fw-400);
   font-size: var(--fs-30);
   line-height: var(--line-height-35);
+  font-family: var(--ff-bold);
 `
 
 export const FilterBlock = styled.div`

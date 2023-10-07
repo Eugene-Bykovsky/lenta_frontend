@@ -73,11 +73,6 @@ const Global = createGlobalStyle`
     --custom-scroll-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
     --custom-input-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
 
-
-
-
-
-
     // font-weight
     --fw-300: 300;
     --fw-400: 400;
@@ -105,13 +100,13 @@ const Global = createGlobalStyle`
     --line-height-19: 19px;
     --line-height-20: 20px;
 		--line-height-24: 24px; 
+    --line-height-32: 32px; 
     --line-height-35: 35px; 
-
-
   }
 
   body {
 		max-width: 1920px;
+    heightЖ 1775px;
 		margin: 0 auto;
 
     font-family: var(--ff-primary);
@@ -124,9 +119,6 @@ const Global = createGlobalStyle`
     a:hover {
       color: var(--color-hover);
     }
-
-
-
 
 
   }

@@ -1,11 +1,33 @@
 import { FC } from 'react'
-import { BtnRemoveFilter, ButtonExl, ButtonSrch } from './styled'
+import { Link } from 'react-router-dom'
+import { setupModal } from '../../../features/table-forecast/forecastSlice'
+import { useAppDispatch } from '../../../hooks'
+import { BtnRemoveFilter, ButtonBlueBig, ButtonSrch } from './styled'
+
+interface ButtonConfirmExlProps {
+  onClick?: () => void
+}
 
 const ButtonExcel: FC = () => {
-  const handleExcelDwnld = () => {
-    console.log('dwnld into Excel')
+  const dispatch = useAppDispatch()
+  const handleExcelLoading = () => {
+    dispatch(setupModal(true))
   }
-  return <ButtonExl onClick={handleExcelDwnld}>Выгрузить в excel</ButtonExl>
+  return (
+    <Link
+      to={{
+        pathname: `/excel-page`,
+      }}
+      state={{
+        state: { modal: true },
+        background: '/forecast',
+      }}
+    >
+      <ButtonBlueBig onClick={handleExcelLoading}>
+        Выгрузить в excel
+      </ButtonBlueBig>
+    </Link>
+  )
 }
 
 const ButtonSearch: FC = () => {
@@ -24,4 +46,8 @@ const ButtonRemoveFilters: FC = () => {
   )
 }
 
-export { ButtonExcel, ButtonSearch, ButtonRemoveFilters }
+const ButtonConfirmExl: FC<ButtonConfirmExlProps> = ({ onClick }) => {
+  return <BtnRemoveFilter onClick={onClick}>ОК</BtnRemoveFilter>
+}
+
+export { ButtonExcel, ButtonSearch, ButtonRemoveFilters, ButtonConfirmExl }

@@ -55,7 +55,7 @@ export const MenuLink = styled(Link)<{ item: string }>`
   color: var(--color-black);
 
   &:hover {
-    color: var(--color-grey-2);
+    color: var(--color-blue-1);
   }
 
   ${({ item }) =>

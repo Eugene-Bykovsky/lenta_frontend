@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import styled from 'styled-components'
 import { Search } from '../Icons/Search'
 
@@ -35,7 +35,7 @@ const SearchIconContainer = styled.div`
 const InputComponent = () => {
   const [inputValue, setInputValue] = useState('')
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value)
   }
 
@@ -48,7 +48,7 @@ const InputComponent = () => {
         type="text"
         value={inputValue}
         onChange={handleChange}
-        placeholder="Почта"
+        placeholder="Поиск"
       />
     </InputContainer>
   )

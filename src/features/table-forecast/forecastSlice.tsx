@@ -5,6 +5,7 @@ import { TCategory, TForecastsResults } from '../../services/types'
 import { RootState } from '../../store'
 
 export interface TableForecast {
+  modal: boolean
   loading: boolean
   forecast: TForecastsResults[] | []
   category: TCategory[] | []
@@ -12,6 +13,7 @@ export interface TableForecast {
 }
 
 const initialState: TableForecast = {
+  modal: false,
   loading: false,
   forecast: [],
   category: [],
@@ -84,7 +86,11 @@ export const fetchCategory = createAsyncThunk<
 const forecastSlice = createSlice({
   name: '@@forecast',
   initialState,
-  reducers: {},
+  reducers: {
+    setupModal(state, action) {
+      state.modal = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchForecast.fulfilled, (state, action) => {
@@ -115,6 +121,7 @@ const forecastSlice = createSlice({
 })
 
 export const forecastReducer = forecastSlice.reducer
+export const { setupModal } = forecastSlice.actions
 
 export const selectForecastTable = createSelector(
   (state: RootState) => state.forecast,
