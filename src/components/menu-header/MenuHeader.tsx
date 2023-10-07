@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import {
   Container,
+  ExitHov,
   ExitIcon,
   MenuLink,
   PolygonImg,
@@ -109,6 +110,7 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
                 onClick={() => onCloseReports(false)}
               >
                 <ExitIcon />
+                <ExitHov />
                 {item.name}
               </MenuLink>
             ) : (

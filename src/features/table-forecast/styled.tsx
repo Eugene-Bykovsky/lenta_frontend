@@ -25,4 +25,12 @@ export const Selectors = styled.div`
   grid-template-rows: repeat(3, 1fr);
 
   gap: 32px;
+  column-gap: 150px;
+`
+
+export const ButtonBox = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
 `

@@ -52,8 +52,8 @@ const Global = createGlobalStyle`
 
     --color-hover: #296B1E;
 
-
-    
+    --color-scroll-thumb: #C1C1C1;
+    --color-scroll-track: #FAFAFA;
 
     --color-table-Gr: #F1F3F9;
     --color-table-Gr-light: #F8F9FC;
@@ -62,10 +62,20 @@ const Global = createGlobalStyle`
     --color-button-blue-1: #003C96;
     --color-button-blue-2: #7F9DCA;
 
+    //border
+    --border-input: 1px solid #E1E1E1;
+    --border-input-blue: 2px solid #3363AB;
+    --border-input-red: 2px solid #CE2E2E;
+
 		// shadow
 		--custom-box-shadow: 2px 2px 15px 0px #2A2A2A1A, -2px -2px 15px 0px #2A2A2A1A;
-
     --custom-box-shadow-table: 0px 2px 8px 0px #0000001F;
+    --custom-scroll-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
+    --custom-input-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
+
+
+
+
 
 
     // font-weight
@@ -114,6 +124,9 @@ const Global = createGlobalStyle`
     a:hover {
       color: var(--color-hover);
     }
+
+
+
 
 
   }

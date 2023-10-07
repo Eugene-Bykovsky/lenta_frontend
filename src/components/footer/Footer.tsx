@@ -7,13 +7,12 @@ import {
   Phone,
   PhoneCode,
   PhoneIcon,
-  Telegram,
 } from './styled'
 
-import iconTg from '../../asset/icon-telegram.svg'
 import iconPhone from '../../asset/icon-phone.svg'
 import logo from '../../asset/logo-footer.svg'
 import info from '../../asset/footerInn.svg'
+import TelegramLink from '../UI/telegram/Telegram'
 
 export default function Footer() {
   return (
@@ -28,7 +27,7 @@ export default function Footer() {
         <PhoneCode>
           8 800 <Phone>700 4 111</Phone>
         </PhoneCode>
-        <Telegram src={iconTg} alt="логотип-telegramm" />
+        <TelegramLink />
       </Contacts>
     </FooterDiv>
   )

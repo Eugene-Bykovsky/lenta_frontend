@@ -16,6 +16,15 @@ export const ButtonExl = styled.button`
   border: none;
   border-radius: 16px;
   cursor: pointer;
+
+  transition: background 0.3s ease-in-out,
+  color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-button-blue-1)
+  }
+
 `
 
 export const ButtonSrch = styled.button`
@@ -32,6 +41,14 @@ export const ButtonSrch = styled.button`
   border-radius: 16px;
   cursor: pointer;
   font-family: var(--ff-primary);
+
+  transition:
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+
+  &:hover {
+    background: var(--color-button-blue-2);
+  }
 `
 
 export const BtnRemoveFilter = styled.button`
@@ -48,4 +65,12 @@ export const BtnRemoveFilter = styled.button`
   border: none;
   border-radius: 16px;
   cursor: pointer;
+
+  transition: background 0.3s ease-in-out,
+  color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-button-blue-1)
+  }
 `

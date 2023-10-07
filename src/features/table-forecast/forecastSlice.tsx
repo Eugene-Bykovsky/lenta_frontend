@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import axios, { isAxiosError } from 'axios'
 import { categoriesUrl, forecastUrl } from '../../services/api'
 import { TCategory, TForecastsResults } from '../../services/types'
@@ -27,6 +27,8 @@ export const fetchForecast = createAsyncThunk<
   async (_, thunkApi) => {
     try {
       const response = await axios.get(forecastUrl)
+      console.log('fetchForecast')
+
       return response.data.results as TForecastsResults[]
     } catch (error) {
       if (isAxiosError(error)) {
@@ -58,6 +60,7 @@ export const fetchCategory = createAsyncThunk<
   async (_, thunkApi) => {
     try {
       const response = await axios.get(categoriesUrl)
+      console.log('categoriesUrl')
       return response.data.results as TCategory[]
     } catch (error) {
       if (isAxiosError(error)) {
@@ -112,3 +115,16 @@ const forecastSlice = createSlice({
 })
 
 export const forecastReducer = forecastSlice.reducer
+
+export const selectForecastTable = createSelector(
+  (state: RootState) => state.forecast,
+
+  (forecastState) => {
+    return forecastState.forecast.map((fcstItem) => {
+      const categoryConcat = forecastState.category.find(
+        (cat) => cat.pr_sku_id === fcstItem.pr_sku_id
+      )
+      return { ...fcstItem, ...categoryConcat, checked: false }
+    })
+  }
+)
