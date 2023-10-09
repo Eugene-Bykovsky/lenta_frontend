@@ -2,14 +2,20 @@ import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
 
-
-  /* UltraLight */
     @font-face {
       font-family: 'Gilroy-UltraLight';
       src:
       url('/font/Gilroy-UltraLight.woff2') format('woff2'),
       url('/font/Gilroy-UltraLight.woff') format('woff'),
       url('/font/Gilroy-UltraLight.ttf') format('ttf');
+    }
+
+    @font-face {
+      font-family: 'Thin';
+      src:
+      url('/font/Gilroy-Thin.woff2') format('woff2'),
+      url('/font/Gilroy-Thin.woff') format('woff'),
+      url('/font/Gilroy-Thin.ttf') format('ttf');
     }
 
     @font-face {
@@ -30,8 +36,10 @@ const Global = createGlobalStyle`
 
   :root {
     // font
+    --ff-light: 'Gilroy-UltraLight', sans-serif;
     --ff-primary: 'Gilroy', sans-serif;
     --ff-bold: 'Gilroy-bold', sans-serif;
+    --ff-thin: 'Thin', sans-serif;
 
 
     // colors
@@ -49,11 +57,12 @@ const Global = createGlobalStyle`
 		--color-yellow-1: #FFB900;
     --color-yellow-2: #FECE00;
 		--color-white: #FFFFFF;
+    --color-red: #CE2E2E;
 
     --color-hover: #296B1E;
 
-
-    
+    --color-scroll-thumb: #C1C1C1;
+    --color-scroll-track: #FAFAFA;
 
     --color-table-Gr: #F1F3F9;
     --color-table-Gr-light: #F8F9FC;
@@ -62,11 +71,16 @@ const Global = createGlobalStyle`
     --color-button-blue-1: #003C96;
     --color-button-blue-2: #7F9DCA;
 
+    //border
+    --border-input: 1px solid #E1E1E1;
+    --border-input-blue: 2px solid #3363AB;
+    --border-input-red: 2px solid #CE2E2E;
+
 		// shadow
 		--custom-box-shadow: 2px 2px 15px 0px #2A2A2A1A, -2px -2px 15px 0px #2A2A2A1A;
-
     --custom-box-shadow-table: 0px 2px 8px 0px #0000001F;
-
+    --custom-scroll-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
+    --custom-input-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
 
     // font-weight
     --fw-300: 300;
@@ -95,13 +109,13 @@ const Global = createGlobalStyle`
     --line-height-19: 19px;
     --line-height-20: 20px;
 		--line-height-24: 24px; 
+    --line-height-32: 32px; 
     --line-height-35: 35px; 
-
-
   }
 
   body {
 		max-width: 1920px;
+    heightЖ 1775px;
 		margin: 0 auto;
 
     font-family: var(--ff-primary);

@@ -1,23 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import axios from 'axios'
+import { filtersReducer } from './features/filters/filtersSlice'
 import { forecastReducer } from './features/table-forecast/forecastSlice'
-// import * as api from './services/api'
 
 export const store = configureStore({
   reducer: {
     forecast: forecastReducer,
+    filters: filtersReducer,
   },
   devTools: true,
-  // middleware: (getDefaultMiddlware) =>
-  //   getDefaultMiddlware({
-  //     thunk: {
-  //       extraArgument: {
-  //         client: axios,
-  //         api,
-  //       },
-  //     },
-  //     serializableCheck: false,
-  //   }),
 })
 
 export type RootState = ReturnType<typeof store.getState>

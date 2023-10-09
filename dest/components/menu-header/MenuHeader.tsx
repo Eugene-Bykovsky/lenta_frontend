@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import {
   Container,
+  ExitHov,
   ExitIcon,
   MenuLink,
   PolygonImg,
@@ -39,8 +40,12 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
       link: 'sku',
     },
     {
-      name: 'Цены',
+      name: 'Актуальные цены',
       link: 'prices',
+    },
+    {
+      name: 'Прогнозируемые цены',
+      link: 'frsctprices',
     },
     {
       name: 'База товаров',
@@ -49,6 +54,17 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
     {
       name: 'Склады',
       link: 'stocks',
+    },
+  ]
+
+  const reports = [
+    {
+      name: 'Отчёт по прогнозам',
+      link: 'reports',
+    },
+    {
+      name: 'Отчёт по срокам исполнения',
+      link: 'data_reports',
     },
   ]
 
@@ -63,7 +79,7 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
     },
     {
       name: 'Выход',
-      link: 'logOut',
+      link: 'login',
     },
   ]
 
@@ -84,11 +100,16 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
               {item.name}
             </MenuLink>
           ))}
-        {item === 'Отчеты' && (
-          <MenuLink to="soon" onClick={() => onCloseReports(false)}>
-            В процессе разработки...
-          </MenuLink>
-        )}
+        {item === 'Отчеты' &&
+          reports.map((item) => (
+            <MenuLink
+              key={item.name}
+              to={item.link}
+              onClick={() => onCloseReports(false)}
+            >
+              {item.name}
+            </MenuLink>
+          ))}
         {item === 'Справочники' &&
           referencуBooks.map((item) => (
             <MenuLink
@@ -109,6 +130,7 @@ const MenuHeader: FC<IProps> = ({ open, item, onCloseReports }) => {
                 onClick={() => onCloseReports(false)}
               >
                 <ExitIcon />
+                <ExitHov />
                 {item.name}
               </MenuLink>
             ) : (

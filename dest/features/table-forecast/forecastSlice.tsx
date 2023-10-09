@@ -1,18 +1,27 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import axios, { isAxiosError } from 'axios'
-import { categoriesUrl, forecastUrl } from '../../services/api'
+import { categoriesUrl, forecastPages, forecastRows } from '../../services/api'
+import { convertDateFormat } from '../../services/const'
 import { TCategory, TForecastsResults } from '../../services/types'
 import { RootState } from '../../store'
 
 export interface TableForecast {
-  loading: boolean
+  isAuth: boolean
+  page: number
+  rows: number | null
+  loadingForecast: boolean
+  loadingCategory: boolean
   forecast: TForecastsResults[] | []
   category: TCategory[] | []
   error: string | null
 }
 
 const initialState: TableForecast = {
-  loading: false,
+  isAuth: false,
+  page: 1,
+  rows: null,
+  loadingForecast: false,
+  loadingCategory: false,
   forecast: [],
   category: [],
   error: null,
@@ -20,13 +29,20 @@ const initialState: TableForecast = {
 
 export const fetchForecast = createAsyncThunk<
   TForecastsResults[],
-  void,
+  { id?: number; qty?: number | null },
   { state: RootState }
 >(
   'forecast/fetchForecast',
-  async (_, thunkApi) => {
+  async ({ id, qty }, thunkApi) => {
     try {
-      const response = await axios.get(forecastUrl)
+      let response
+
+      if (qty !== undefined) {
+        response = await axios.get(`${forecastRows}${qty}`)
+      } else {
+        response = await axios.get(`${forecastPages}${id}`)
+      }
+
       return response.data.results as TForecastsResults[]
     } catch (error) {
       if (isAxiosError(error)) {
@@ -35,18 +51,16 @@ export const fetchForecast = createAsyncThunk<
         throw error
       }
     }
+  },
+
+  {
+    condition: (_, { getState }) => {
+      const { loadingForecast } = getState().forecast
+      if (loadingForecast) {
+        return false
+      }
+    },
   }
-
-  // {
-  //   condition: (_, { getState }) => {
-  //     const { loading } = getState().forecast
-  //     console.log(111, loading)
-
-  //     if (loading) {
-  //       return false
-  //     }
-  //   },
-  // }
 )
 
 export const fetchCategory = createAsyncThunk<
@@ -66,49 +80,82 @@ export const fetchCategory = createAsyncThunk<
         throw error
       }
     }
-  }
+  },
 
-  // {
-  //   condition: (_, { getState }) => {
-  //     const { loading, category } = getState().forecast
-  //     if (loading && category.length > 0) {
-  //       return false
-  //     }
-  //   },
-  // }
+  {
+    condition: (_, { getState }) => {
+      const { loadingCategory } = getState().forecast
+      if (loadingCategory) {
+        return false
+      }
+    },
+  }
 )
 
 const forecastSlice = createSlice({
   name: '@@forecast',
   initialState,
-  reducers: {},
+  reducers: {
+    setAuth(state, action) {
+      state.isAuth = action.payload
+    },
+
+    setPage(state, action) {
+      state.page = action.payload
+    },
+    setRows(state, action) {
+      state.page = 1
+      state.rows = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchForecast.fulfilled, (state, action) => {
         state.forecast = action.payload
-        state.loading = false
+        state.loadingForecast = false
+        state.error = null
+      })
+      .addCase(fetchForecast.pending, (state) => {
+        state.loadingForecast = true
         state.error = null
       })
       .addCase(fetchCategory.fulfilled, (state, action) => {
         state.category = action.payload
-        state.loading = false
+        state.loadingCategory = false
+        state.error = null
+      })
+      .addCase(fetchCategory.pending, (state) => {
+        state.loadingCategory = true
         state.error = null
       })
       .addMatcher(
         (action) => action.type.endsWith('/rejected'),
         (state, action) => {
-          state.loading = false
+          state.loadingForecast = false
+          state.loadingCategory = false
           state.error = action.payload as string | null
-        }
-      )
-      .addMatcher(
-        (action) => action.type.endsWith('/pending'),
-        (state) => {
-          state.loading = true
-          state.error = null
         }
       )
   },
 })
 
 export const forecastReducer = forecastSlice.reducer
+export const { setAuth, setPage, setRows } = forecastSlice.actions
+
+export const selectForecastTable = createSelector(
+  (state: RootState) => state.forecast,
+
+  (forecastState) => {
+    return forecastState.forecast.map((fcstItem) => {
+      const categoryConcat = forecastState.category.find(
+        (cat) => cat.pr_sku_id === fcstItem.pr_sku_id
+      )
+      return {
+        ...fcstItem,
+        ...categoryConcat,
+        checked: false,
+        date: fcstItem.date ? convertDateFormat(fcstItem.date) : fcstItem.date,
+      }
+    })
+  }
+)

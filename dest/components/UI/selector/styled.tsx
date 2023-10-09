@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 export const CustomSelectWrapper = styled.div`
   position: relative;
   width: 528px;
@@ -12,21 +13,62 @@ export const SelectWrapper = styled.div`
   width: 304px;
 `
 
-export const SelectButton = styled.button<{ isDefault: boolean }>`
+export const SelectButton = styled.button<{
+  $isDefault: boolean
+  $isOpen: boolean
+}>`
   width: 304px;
+  height: 56px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   font-family: var(--ff-primary);
   font-size: var(--fs-16);
+  color: ${({ $isDefault }) => ($isDefault ? '#898997' : '#111111')};
 
-  color: ${({ isDefault }) => (isDefault ? '#898997' : '#111111')};
   background: var(--color-white);
   border: 1px solid #898997;
   border-radius: 8px;
   text-align: left;
+  position: relative;
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  svg {
+    transition: opacity 0.5s ease;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+  }
+
+  svg:first-child {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  svg:last-child {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  ${({ $isOpen }) =>
+    $isOpen &&
+    `
+  svg:first-child {
+    opacity: 1;
+    visibility: visible;
+  }
+  svg:last-child {
+    opacity: 0;
+    visibility: hidden;
+  }
+`}
 `
 
 export const Dropdown = styled.ul`

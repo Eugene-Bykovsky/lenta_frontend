@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 import { Exit } from '../UI/Icons/Exit'
+import { ExitHover } from '../UI/Icons/ExitHover'
 import { Polygon } from '../UI/Icons/Polygon'
 
 export const PolygonImgContainer = styled.div<{ item: string }>`
@@ -54,7 +55,7 @@ export const MenuLink = styled(Link)<{ item: string }>`
   color: var(--color-black);
 
   &:hover {
-    color: var(--color-grey-2);
+    color: var(--color-blue-1);
   }
 
   ${({ item }) =>
@@ -75,14 +76,30 @@ export const MenuLink = styled(Link)<{ item: string }>`
 
       &:hover {
         color: var(--color-black);
+        svg:first-child {
+          display: none;
+        }
+        svg:last-child {
+          display: block;
+        }
+      }
+
+      svg:first-child {
+        display: block;
+      }
+
+      svg:last-child {
+        display: none;
       }
     `};
 `
 
 export const ExitIcon = styled(Exit)`
-  &:hover {
-    opacity: 0.33;
-  }
+  display: block;
+`
+
+export const ExitHov = styled(ExitHover)`
+  display: none;
 `
 
 export const ExitBox = styled.div`

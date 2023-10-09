@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const ErrorPage = styled.div`
-  margin-top: 150px;
+  margin: 150px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,6 +22,8 @@ export const ErrorExit = styled.p`
 
 export const Button = styled.button`
   padding: 14px;
+  width: 320px;
+  height: 40px;
 
   cursor: pointer;
 
@@ -34,7 +36,12 @@ export const Button = styled.button`
   border: none;
   border-radius: 16px;
 
-  &: hover {
-    background: var(--color-blue-2);
+  transition:
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--color-black);
+    background: var(--color-button-blue-2);
   }
 `

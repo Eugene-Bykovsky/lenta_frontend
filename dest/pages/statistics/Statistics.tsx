@@ -1,22 +1,20 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { FilterBox } from '../../components/filter-box/FilterBox'
 import SunLoader from '../../components/loader/Loader'
 import { Table } from '../../components/table/Table'
 import { ButtonExcel } from '../../components/UI/button/ButtonUI'
 import InputComponent from '../../components/UI/input/Input'
-import { useAppDispatch, useAppSelector } from '../../hooks'
-import { COlUMN_Forecast, SELECT_CONF_FCST } from '../../services/const'
-
 import {
   fetchCategory,
   fetchForecast,
   selectForecastTable,
-} from './forecastSlice'
-import { ForecastContainer, Header } from './styled'
+} from '../../features/table-forecast/forecastSlice'
+import { ForecastContainer, Header } from '../../features/table-forecast/styled'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { COlUMN_Statistic, SELECT_CONF_STAT } from '../../services/const'
 
-const TableForecast = () => {
+const Statistics = () => {
   const dispatch = useAppDispatch()
-
   const { error, loadingForecast, loadingCategory, page, rows } =
     useAppSelector((state) => state.forecast)
   const forecastTable = useAppSelector(selectForecastTable)
@@ -31,17 +29,17 @@ const TableForecast = () => {
 
   return (
     <ForecastContainer>
-      <Header>Прогноз</Header>
-      <FilterBox selectors={SELECT_CONF_FCST} text="forecast" />
+      <Header>Статистика по прогнозам</Header>
+      <FilterBox selectors={SELECT_CONF_STAT} text="stat" />
       <InputComponent />
       <ButtonExcel />
       <Table
         forecastTable={forecastTable}
-        colomnsName={COlUMN_Forecast}
-        name="forecast"
+        colomnsName={COlUMN_Statistic}
+        name="statistic"
       />
     </ForecastContainer>
   )
 }
 
-export { TableForecast }
+export { Statistics }

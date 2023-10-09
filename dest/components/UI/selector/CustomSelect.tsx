@@ -1,6 +1,5 @@
 import { FC, useState } from 'react'
-import { ArrowGrey } from '../Icons/ArrowGrey'
-
+import { ArrowGrey, ArrowGreyUp } from '../Icons/ArrowGrey'
 import {
   CustomSelectWrapper,
   Dropdown,
@@ -10,19 +9,14 @@ import {
   SelectWrapper,
 } from './styled'
 
-const options = [
-  { value: '-Все-' },
-  { value: 'option 1' },
-  { value: 'option 2' },
-  { value: 'option 3' },
-  { value: 'option 5' },
-  { value: 'option 6' },
-]
-
 type TProps = {
-  text: string
+  name: string
+  options: string[]
+  onSelect: (selected: string, index: number) => void
+  id?: string
 }
-const CustomSelect: FC<TProps> = ({ text }) => {
+
+const CustomSelect: FC<TProps> = ({ name, options, onSelect }) => {
   const [selectedOption, setSelectedOption] = useState('-Все-')
   const [isOpen, setIsOpen] = useState(false)
 
@@ -33,33 +27,35 @@ const CustomSelect: FC<TProps> = ({ text }) => {
   const handleOptionClick = (option: string) => {
     setSelectedOption(option)
     setIsOpen(false)
+    const selectedIndex = options.indexOf(option)
+    onSelect(option, selectedIndex)
   }
 
   return (
     <CustomSelectWrapper>
-      <LabelText>{text} </LabelText>
+      <LabelText>{name} </LabelText>
       <SelectWrapper>
         <SelectButton
           onClick={toggleDropdown}
-          isDefault={selectedOption === '-Все-'}
+          $isDefault={selectedOption === '-Все-'}
+          $isOpen={isOpen}
         >
           {selectedOption}
           {selectedOption === '-Все-'}
+
+          <ArrowGreyUp />
           <ArrowGrey />
         </SelectButton>
         {isOpen && (
           <Dropdown>
             {options.map((option) => (
               <DropdownItem
-                key={option.value}
-                onClick={() => handleOptionClick(option.value)}
-                className={option.value === selectedOption ? 'selected' : ''}
+                key={option}
+                onClick={() => handleOptionClick(option)}
+                className={option === selectedOption ? 'selected' : ''}
               >
-                {option.value}
-                {
-                  option.value === selectedOption
-                  // && (<Checkmark>&#10003;</Checkmark>)
-                }
+                {option}
+                {option === selectedOption}
               </DropdownItem>
             ))}
           </Dropdown>
