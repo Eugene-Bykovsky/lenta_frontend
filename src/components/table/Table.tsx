@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import {
   ColumnDef,
   createColumnHelper,
@@ -20,7 +20,7 @@ import { CustomInput } from '../UI/input/inputLogin'
 import { useForecastColumns } from '../../hooks/useColumns'
 import { Pagination } from '../pagination/Pagination'
 import usePages from '../../hooks/usePages'
-import { useAppDispatch } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setRows } from '../../features/table-forecast/forecastSlice'
 import { useRows } from '../../hooks/useRows'
 
@@ -47,6 +47,7 @@ interface TForecastTableProps {
   forecastTable: TforecastTab[]
   column?: number
   colomnsName: TColumns
+  name: string
 }
 
 export const Table: FC<TForecastTableProps> = ({
@@ -54,7 +55,9 @@ export const Table: FC<TForecastTableProps> = ({
   colomnsName,
 }) => {
   const dispatch = useAppDispatch()
+  const selectDaysTable = useAppSelector((state) => state.filters.days)
   const [data, setData] = useState(forecastTable)
+
   const { rowsQty, handleRows } = useRows()
   const { handlePage } = usePages()
   const [headerCheck, setHeaderCheck] = useState(false)
@@ -82,14 +85,16 @@ export const Table: FC<TForecastTableProps> = ({
   const generateDateColumns = (daysAhead: number) => {
     const formatDate = (date: Date) => {
       const day = String(date.getDate()).padStart(2, '0')
-      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const month = String(date.getMonth()).padStart(2, '0')
       const year = date.getFullYear()
       return `${day}.${month}.${year}`
     }
 
     return Array.from({ length: daysAhead }).map((_, i) => {
       const date = new Date()
-      date.setDate(date.getDate() + i)
+
+      date.setDate(date.getDate() - 50 + i)
+
       const formattedDate = formatDate(date).toString()
 
       return columnHelper.accessor(`${formattedDate}`, {
@@ -102,9 +107,9 @@ export const Table: FC<TForecastTableProps> = ({
     })
   }
 
-  const dateColumns = generateDateColumns(14)
+  //создание колонок часть из констант + часть на выбор клиента (динамечески период)
+  let dateColumns = generateDateColumns(selectDaysTable ?? 14)
   const forecastColumns = useForecastColumns(colomnsName)
-
   const columns = [
     columnHelper.accessor('filter', {
       header: () => (
@@ -134,6 +139,10 @@ export const Table: FC<TForecastTableProps> = ({
     columns,
     getCoreRowModel: getCoreRowModel(),
   })
+
+  useEffect(() => {
+    dateColumns = generateDateColumns(selectDaysTable ?? 14)
+  }, [forecastColumns])
 
   return (
     <TableContainer>
@@ -185,7 +194,7 @@ export const Table: FC<TForecastTableProps> = ({
           placeholder={'10'}
         />
         <ButtonRow onClick={() => dispatch(setRows(rowsQty))}>
-          количестко строк
+          кол-во строк
         </ButtonRow>
       </PaginationBox>
     </TableContainer>

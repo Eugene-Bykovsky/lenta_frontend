@@ -10,11 +10,13 @@ import {
 } from './styled'
 
 type TProps = {
-  text: string
+  name: string
   options: string[]
+  onSelect: (selected: string, index: number) => void
+  id?: string
 }
 
-const CustomSelect: FC<TProps> = ({ text, options }) => {
+const CustomSelect: FC<TProps> = ({ name, options, onSelect }) => {
   const [selectedOption, setSelectedOption] = useState('-Все-')
   const [isOpen, setIsOpen] = useState(false)
 
@@ -25,11 +27,13 @@ const CustomSelect: FC<TProps> = ({ text, options }) => {
   const handleOptionClick = (option: string) => {
     setSelectedOption(option)
     setIsOpen(false)
+    const selectedIndex = options.indexOf(option)
+    onSelect(option, selectedIndex)
   }
 
   return (
     <CustomSelectWrapper>
-      <LabelText>{text} </LabelText>
+      <LabelText>{name} </LabelText>
       <SelectWrapper>
         <SelectButton
           onClick={toggleDropdown}

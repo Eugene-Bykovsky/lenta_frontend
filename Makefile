@@ -5,7 +5,7 @@ start:
 	docker run -p 8080:3000 lenta
 
 stop:
-	docker stop lentaдфеуые
+	docker stop lenta
 
 delete:
 	docker container prune

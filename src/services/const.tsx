@@ -3,27 +3,6 @@ export const convertDateFormat = (inputDate: string): string => {
   return `${day}.${month}.${year}`
 }
 
-// function generateUniqueKeys(data: string[]) {
-//   return data.map((item: string) => {
-//     const { pr_cat_id, pr_group_id, pr_sku_id, pr_subcat_id, st_id } = item
-
-//     // Конкатенация значений для создания уникального ключа
-//     const uniqueKey = [
-//       pr_cat_id,
-//       pr_group_id,
-//       pr_sku_id,
-//       pr_subcat_id,
-//       st_id,
-//     ].join('-')
-
-//     // Возвращаем новый объект с добавленным уникальным ключом
-//     return {
-//       ...item,
-//       uniqueKey,
-//     }
-//   })
-// }
-
 export type TColumns = {
   accessor: string
   header: string
@@ -65,15 +44,6 @@ export const SELECT_CONFIGS = [
   'Спрос на: ',
 ]
 
-// export const SELECT_CONFIG_Static = [
-//   'Город :',
-//   'Категория товара : ',
-//   'Выбор ТК : ',
-//   'Подкатегория товара: ',
-//   'Группа товара :',
-//   'Товар :',
-// ]
-
 const city = ['Москва', 'Мурманск', 'Киров', 'Иваново']
 
 const days = [
@@ -114,249 +84,72 @@ const cat = [
   '1aa0ff313c28fa4a40c5bc0841d276',
 ]
 
-export const SELECT_CONF = [
-  { name: 'Город :', options: city },
-  { name: 'Категория товара : ', options: cat },
-  { name: 'Выбор ТК : ', options: store },
-  { name: 'Подкатегория товара: : ', options: subcat },
-  { name: 'Группа товара: : ', options: cat },
-  { name: 'Товар товара: : ', options: cat },
-  { name: 'Спрос на: : ', options: days },
+export const SELECT_CONF_FCST = [
+  { name: 'Город :', options: city, id: 'city' },
+  { name: 'Категория товара : ', options: cat, id: 'cat' },
+  { name: 'Выбор ТК : ', options: store, id: 'store' },
+  { name: 'Подкатегория товара: : ', options: subcat, id: 'subcat' },
+  { name: 'Группа товара: : ', options: cat, id: 'group' },
+  { name: 'Товар : ', options: cat, id: 'item' },
+  { name: 'Спрос на: : ', options: days, id: 'day' },
 ]
 
-// the same check
-// pr_cat_id
-// pr_group_id
-// pr_subcat_id
-// st_id
-
-export const REPLACE_DATA_0 = [
-  {
-    checked: false,
-    date: '2023-10-09',
-    id: 1,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: '1',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 99,
-  },
-  {
-    checked: false,
-    date: '2023-10-08',
-    id: 2,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: '1',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 22,
-  },
-  {
-    checked: false,
-    date: '2023-10-10',
-    id: 3,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: '1',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 666,
-  },
-  {
-    checked: false,
-    date: '2023-10-11',
-    id: 4,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 666,
-  },
-  {
-    checked: false,
-    date: '2023-10-08',
-    id: 5,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 8,
-  },
-  {
-    checked: false,
-    date: '2023-10-10',
-    id: 6,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 78,
-  },
-  {
-    checked: false,
-    date: '2023-10-11',
-    id: 7,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 5,
-  },
-  {
-    checked: false,
-    date: '2023-11-04',
-    id: 8,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 111,
-  },
-  {
-    checked: false,
-    date: '2023-11-04',
-    id: 9,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 222,
-  },
-  {
-    checked: false,
-    date: '2023-11-05',
-    id: 10,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec9',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 1000,
-  },
-  {
-    checked: false,
-    date: '2023-11-06',
-    id: 9,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec9',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 666,
-  },
-  {
-    checked: false,
-    date: '2023-11-06',
-    id: 10,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 100,
-  },
-  {
-    checked: false,
-    date: '2023-11-06',
-    id: 11,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 666,
-  },
-  {
-    checked: false,
-    date: '2023-11-06',
-    id: 12,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 150,
-  },
-  {
-    checked: false,
-    date: '2024-11-10',
-    id: 13,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 200,
-  },
-  {
-    checked: false,
-    date: '2024-11-10',
-    id: 14,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec9',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 300,
-  },
-  {
-    checked: false,
-    date: '2024-11-06',
-    id: 15,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec7',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 4,
-  },
-  {
-    checked: false,
-    date: '2024-11-06',
-    id: 16,
-    pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
-    pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
-    pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec5',
-    pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
-    pr_uom_id: 17,
-    st_id: '1aa057313c28fa4a40c5bc084b11d276',
-    target: 10,
-  },
+export const SELECT_CONF_STAT = [
+  { name: 'Город :', options: city, id: 'city' },
+  { name: 'Категория товара : ', options: cat, id: 'cat' },
+  { name: 'Выбор ТК : ', options: store, id: 'store' },
+  { name: 'Подкатегория товара: : ', options: subcat, id: 'subcat' },
+  { name: 'Группа товара: : ', options: cat, id: 'group' },
+  { name: 'Товар : ', options: cat, id: 'item' },
+  { name: 'Период с: ', options: days, id: 'day' },
+  { name: 'Период по: ', options: days, id: 'day' },
 ]
 
-// REPLACE_DATA_0 = generateUniqueKeys(REPLACE_DATA_0)
-
-// export const REPLACE_DATA = REPLACE_DATA_0.map((fcstItem) => {
-//   return {
-//     ...fcstItem,
+// const ArrUpdated = [
+//   {
 //     checked: false,
-//     date: convertDateFormat(fcstItem.date),
-//   }
-// })
+//     id: 16689,
+//     pr_cat_id: '1bc0249a6412ef49b07fe6f62e6dc8de',
+//     pr_group_id: 'c74d97b01eae257e44aa9d5bade97baf',
+//     pr_sku_id: 'fd064933250b0bfe4f926b867b0a5ec8',
+//     pr_subcat_id: 'ca34f669ae367c87f0e75dcae0f61ee5',
+//     pr_uom_id: 17,
+//     st_id: '1ecfb463472ec9115b10c292ef8bc986',
+//     sales_data: [{ target: 4, date: '18.07.2023' }, { target: 4, date: '21.07.2023' }, .... ],
+//   },
+// ]
 
-// const rowFilter = [{ value: 10 }, { value: 50 }, { value: 100 }, { value: 200 }]
+// ;
+
+// function updateArray(originalArray: any[]) {
+//   const map = new Map()
+
+//   originalArray.forEach((item: any) => {
+//     const key =
+//       item.pr_cat_id +
+//       item.pr_group_id +
+//       item.pr_sku_id +
+//       item.pr_subcat_id +
+//       item.pr_uom_id +
+//       item.st_id
+
+//     if (!map.has(key)) {
+//       map.set(key, {
+//         ...item,
+//         sales_data: [{ date: item.date, target: item.target }],
+//         target: item.target,
+//       })
+//     } else {
+//       // Если ключ есть, добавляем новую дату и цель в sales_data
+//       const mapItem = map.get(key)
+//       mapItem.sales_data.push({ date: item.date, target: item.target })
+//       mapItem.target += item.target
+//     }
+//   })
+
+//   return [...map.values()]
+// }
+
+// export const ArrUpdated = updateArray(newArr)
+
+// console.log(ArrUpdated)

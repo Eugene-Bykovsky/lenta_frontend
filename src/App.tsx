@@ -37,7 +37,6 @@ function App() {
           <Route path="/excel-page" element={<ExlDownLoad />} />
         </Routes>
       )}
-
       <Footer />
     </>
   )
