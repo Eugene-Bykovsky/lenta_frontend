@@ -11,7 +11,7 @@ import {
 
 type TProps = {
   text: string
-  options: { value: string }[]
+  options: string[]
 }
 
 const CustomSelect: FC<TProps> = ({ text, options }) => {
@@ -33,8 +33,8 @@ const CustomSelect: FC<TProps> = ({ text, options }) => {
       <SelectWrapper>
         <SelectButton
           onClick={toggleDropdown}
-          isDefault={selectedOption === '-Все-'}
-          isOpen={isOpen}
+          $isDefault={selectedOption === '-Все-'}
+          $isOpen={isOpen}
         >
           {selectedOption}
           {selectedOption === '-Все-'}
@@ -46,12 +46,12 @@ const CustomSelect: FC<TProps> = ({ text, options }) => {
           <Dropdown>
             {options.map((option) => (
               <DropdownItem
-                key={option.value}
-                onClick={() => handleOptionClick(option.value)}
-                className={option.value === selectedOption ? 'selected' : ''}
+                key={option}
+                onClick={() => handleOptionClick(option)}
+                className={option === selectedOption ? 'selected' : ''}
               >
-                {option.value}
-                {option.value === selectedOption}
+                {option}
+                {option === selectedOption}
               </DropdownItem>
             ))}
           </Dropdown>

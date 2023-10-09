@@ -14,8 +14,8 @@ export const SelectWrapper = styled.div`
 `
 
 export const SelectButton = styled.button<{
-  isDefault: boolean
-  isOpen: boolean
+  $isDefault: boolean
+  $isOpen: boolean
 }>`
   width: 304px;
   height: 56px;
@@ -25,12 +25,19 @@ export const SelectButton = styled.button<{
   align-items: center;
   font-family: var(--ff-primary);
   font-size: var(--fs-16);
-  color: ${({ isDefault }) => (isDefault ? '#898997' : '#111111')};
+  color: ${({ $isDefault }) => ($isDefault ? '#898997' : '#111111')};
+
   background: var(--color-white);
   border: 1px solid #898997;
   border-radius: 8px;
   text-align: left;
   position: relative;
+
+  p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   svg {
     transition: opacity 0.5s ease;
@@ -50,8 +57,8 @@ export const SelectButton = styled.button<{
     visibility: visible;
   }
 
-  ${({ isOpen }) =>
-    isOpen &&
+  ${({ $isOpen }) =>
+    $isOpen &&
     `
   svg:first-child {
     opacity: 1;

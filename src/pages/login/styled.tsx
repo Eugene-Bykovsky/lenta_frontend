@@ -18,8 +18,14 @@ export const AuthWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
-  input:nth-child(3) {
-    margin-bottom: 40px;
+  span {
+    width: 100%;
+    text-align: left;
+    font-family: var(--ff-light);
+    margin: 5px 0 25px;
+    font-size: var(--fs-14);
+    line-height: var(--line-height-16);
+    color: var(--color-red);
   }
 `
 

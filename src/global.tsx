@@ -2,14 +2,20 @@ import { createGlobalStyle } from 'styled-components'
 
 const Global = createGlobalStyle`
 
-
-  /* UltraLight */
     @font-face {
       font-family: 'Gilroy-UltraLight';
       src:
       url('/font/Gilroy-UltraLight.woff2') format('woff2'),
       url('/font/Gilroy-UltraLight.woff') format('woff'),
       url('/font/Gilroy-UltraLight.ttf') format('ttf');
+    }
+
+    @font-face {
+      font-family: 'Thin';
+      src:
+      url('/font/Gilroy-Thin.woff2') format('woff2'),
+      url('/font/Gilroy-Thin.woff') format('woff'),
+      url('/font/Gilroy-Thin.ttf') format('ttf');
     }
 
     @font-face {
@@ -30,8 +36,10 @@ const Global = createGlobalStyle`
 
   :root {
     // font
+    --ff-light: 'Gilroy-UltraLight', sans-serif;
     --ff-primary: 'Gilroy', sans-serif;
     --ff-bold: 'Gilroy-bold', sans-serif;
+    --ff-thin: 'Thin', sans-serif;
 
 
     // colors
@@ -49,6 +57,7 @@ const Global = createGlobalStyle`
 		--color-yellow-1: #FFB900;
     --color-yellow-2: #FECE00;
 		--color-white: #FFFFFF;
+    --color-red: #CE2E2E;
 
     --color-hover: #296B1E;
 

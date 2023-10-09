@@ -6,9 +6,7 @@ export interface CheckboxProps {
   name?: string
 }
 
-const Checkbox: FC<CheckboxProps> = ({ checked, onChange, name }) => {
-  console.log(name, checked)
-
+const Checkbox: FC<CheckboxProps> = ({ checked, onChange }) => {
   return <input type="checkbox" checked={checked} onChange={onChange} />
 }
 

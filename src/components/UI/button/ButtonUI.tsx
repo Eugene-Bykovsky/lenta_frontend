@@ -1,7 +1,5 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { setupModal } from '../../../features/table-forecast/forecastSlice'
-import { useAppDispatch } from '../../../hooks'
 import { BtnRemoveFilter, ButtonBlueBig, ButtonSrch } from './styled'
 
 interface ButtonConfirmExlProps {
@@ -9,10 +7,6 @@ interface ButtonConfirmExlProps {
 }
 
 const ButtonExcel: FC = () => {
-  const dispatch = useAppDispatch()
-  const handleExcelLoading = () => {
-    dispatch(setupModal(true))
-  }
   return (
     <Link
       to={{
@@ -23,9 +17,7 @@ const ButtonExcel: FC = () => {
         background: '/forecast',
       }}
     >
-      <ButtonBlueBig onClick={handleExcelLoading}>
-        Выгрузить в excel
-      </ButtonBlueBig>
+      <ButtonBlueBig>Выгрузить в excel</ButtonBlueBig>
     </Link>
   )
 }
