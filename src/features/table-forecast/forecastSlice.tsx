@@ -38,11 +38,8 @@ export const fetchForecast = createAsyncThunk<
       let response
 
       if (qty !== undefined) {
-        console.log('qty !== undefined', 1, `${forecastRows}${qty}`)
-
         response = await axios.get(`${forecastRows}${qty}`)
       } else {
-        console.log('qty === undefined', 2, `${forecastPages}${id}`)
         response = await axios.get(`${forecastPages}${id}`)
       }
 

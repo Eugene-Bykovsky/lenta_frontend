@@ -6,7 +6,13 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table'
-import { PaginationBox, TableBox, TableContainer, TableWrapper } from './styled'
+import {
+  ButtonRow,
+  PaginationBox,
+  TableBox,
+  TableContainer,
+  TableWrapper,
+} from './styled'
 import { Checkbox } from '../UI/checkbox/CheckBox'
 import CustomScrollbar from '../UI/scroll/scroll'
 import { TColumns } from '../../services/const'
@@ -129,8 +135,6 @@ export const Table: FC<TForecastTableProps> = ({
     getCoreRowModel: getCoreRowModel(),
   })
 
-  table.getHeaderGroups().map((headerGroup) => console.log(headerGroup))
-
   return (
     <TableContainer>
       <TableWrapper>
@@ -178,10 +182,11 @@ export const Table: FC<TForecastTableProps> = ({
           type="text"
           name="rows"
           value={rowsQty}
+          placeholder={'10'}
         />
-        <button onClick={() => dispatch(setRows(rowsQty))}>
-          Кол-во строк на страницу
-        </button>
+        <ButtonRow onClick={() => dispatch(setRows(rowsQty))}>
+          количестко строк
+        </ButtonRow>
       </PaginationBox>
     </TableContainer>
   )

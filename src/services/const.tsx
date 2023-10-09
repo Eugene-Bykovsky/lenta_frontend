@@ -37,7 +37,7 @@ export const COlUMN_Forecast = [
   { accessor: 'pr_subcat_id', header: 'Подкатегория' },
   { accessor: 'pr_sku_id', header: 'SKU' },
   { accessor: 'item', header: 'Товар' },
-  { accessor: 'item', header: 'Ед. измерения' },
+  { accessor: 'unit', header: 'Ед. измерения' },
   { accessor: 'target', header: 'Количество на 14 дней' },
 ]
 
@@ -49,10 +49,10 @@ export const COlUMN_Statistic = [
   { accessor: 'pr_subcat_id', header: 'Подкатегория' },
   { accessor: 'pr_sku_id', header: 'SKU' },
   { accessor: 'item', header: 'Товар' },
-  { accessor: 'item', header: 'Ед. измерения' },
+  { accessor: 'unit', header: 'Ед. измерения' },
   { accessor: 'target', header: 'Продажи факт' },
-  { accessor: 'city', header: 'Разница' },
-  { accessor: 'city', header: 'Отклонения' },
+  { accessor: 'diff', header: 'Разница' },
+  { accessor: 'persent', header: 'Отклонения' },
 ]
 
 export const SELECT_CONFIGS = [

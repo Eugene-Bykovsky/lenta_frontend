@@ -9,7 +9,7 @@ export const useRows = () => {
     const { value, name } = e.target
 
     if (name === 'rows' && (value === '' || /^[0-9]+$/.test(value))) {
-      setRowsQty(value ? parseInt(value, 10) : 1)
+      setRowsQty(value ? parseInt(value, 10) : 0)
     }
   }
 

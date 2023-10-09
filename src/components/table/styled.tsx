@@ -5,6 +5,33 @@ export const TableContainer = styled.div`
   height: 878px;
 `
 
+export const ButtonRow = styled.button`
+  padding: 0 12px;
+  margin: 0 4px 0;
+  border: none;
+  min-width: 40px;
+  height: 40px;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-14);
+  line-height: var(--line-height-16);
+
+  button:hover {
+    color: var(--color-white);
+    background: var(--color-button-blue-1);
+  }
+
+  border-radius: 10px;
+  cursor: pointer;
+  transition:
+    background 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-button-blue-1);
+  }
+`
+
 export const TableWrapper = styled.div`
   height: 705px;
   border: 1px solid black;
