@@ -97,7 +97,6 @@ export const TableBox = styled.div`
 
   table {
     width: 100%;
-
     border-collapse: collapse;
   }
 
@@ -112,14 +111,12 @@ export const TableBox = styled.div`
 
   th {
     transition:
-      // border-radius 2s ease,
       background-color 1s ease,
       padding 1s ease,
       box-shadow 1s ease;
     padding: 8px;
     min-width: 156px;
     max-width: 156px;
-    // border: none;
   }
 
   th div {
@@ -134,16 +131,18 @@ export const TableBox = styled.div`
       box-shadow: var(--custom-header-shadow);
       border-radius: 16px;
     }
+
     svg {
       margin-left: 15px;
-      fill: black; // меняем цвет SVG
-      transform: scale(1.2); // увеличиваем размер SVG
+      fill: black;
+      transform: scale(1.2);
       transition:
         transform 0.3s ease,
-        fill 0.3s ease; // добавляем плавность изменения
+        fill 0.3s ease;
     }
   }
 
+  th,
   td {
     padding: 8px;
     min-width: 156px;
@@ -151,21 +150,24 @@ export const TableBox = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    vertical-align: middle; // Добавлено: центрируем содержимое по вертикали
   }
 
   th:nth-child(1),
   td:nth-child(1) {
-    min-width: 40px;
-    max-width: 40px;
+    min-width: 56px; // Обновлено: устанавливаем минимальную ширину
+    max-width: 56px; // Обновлено: устанавливаем максимальную ширину
+    height: 37px; // Обновлено: устанавливаем высоту
+    text-align: center; // Добавлено: центрируем содержимое по горизонтали
   }
 
   th:nth-child(10),
   td:nth-child(10) {
     min-width: 192px;
     max-width: 192px;
+
     &:hover {
       min-width: 220px;
-      // max-width: 192px;
       cursor: pointer;
       box-shadow: var(--custom-header-shadow);
       border-radius: 16px;

@@ -131,6 +131,7 @@ export const Table: FC<TForecastTableProps> = ({
           }}
         />
       ),
+      enableSorting: false,
     }),
     ...(forecastColumns as ColumnDef<TforecastTab, unknown>[]),
     ...dateColumns,
