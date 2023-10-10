@@ -81,6 +81,9 @@ const Global = createGlobalStyle`
     --custom-box-shadow-table: 0px 2px 8px 0px #0000001F;
     --custom-scroll-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
     --custom-input-shadow: 0px -1px 0px 0px #F0F0F0, 0px 1px 0px 0px #E8E8E8;
+    --custom-header-shadow: 0px 2px 15px 0px #2A2A2A1A, 0px -2px 15px 0px #2A2A2A1A;
+
+
 
     // font-weight
     --fw-300: 300;

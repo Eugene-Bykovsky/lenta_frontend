@@ -4,6 +4,8 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getSortedRowModel,
+  SortingState,
   useReactTable,
 } from '@tanstack/react-table'
 import {
@@ -23,6 +25,7 @@ import usePages from '../../hooks/usePages'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { setRows } from '../../features/table-forecast/forecastSlice'
 import { useRows } from '../../hooks/useRows'
+import { SortingASC, SortingDesc } from '../UI/Icons/Sorting'
 
 export type TforecastTab = {
   st_id: string
@@ -41,8 +44,6 @@ export type TforecastTab = {
   item?: string
 }
 
-const columnHelper = createColumnHelper<TforecastTab>()
-
 interface TForecastTableProps {
   forecastTable: TforecastTab[]
   column?: number
@@ -57,10 +58,10 @@ export const Table: FC<TForecastTableProps> = ({
   const dispatch = useAppDispatch()
   const selectDaysTable = useAppSelector((state) => state.filters.days)
   const [data, setData] = useState(forecastTable)
-
   const { rowsQty, handleRows } = useRows()
   const { handlePage } = usePages()
   const [headerCheck, setHeaderCheck] = useState(false)
+  const columnHelper = createColumnHelper<TforecastTab>()
 
   const handleAllRows = () => {
     const dataAll: TforecastTab[] = data.map((item) => {
@@ -93,7 +94,7 @@ export const Table: FC<TForecastTableProps> = ({
     return Array.from({ length: daysAhead }).map((_, i) => {
       const date = new Date()
 
-      date.setDate(date.getDate() - 50 + i)
+      date.setDate(date.getDate() - 52 + i)
 
       const formattedDate = formatDate(date).toString()
 
@@ -121,6 +122,7 @@ export const Table: FC<TForecastTableProps> = ({
           }}
         />
       ),
+
       cell: (info) => (
         <Checkbox
           checked={info.row.original.checked}
@@ -129,15 +131,25 @@ export const Table: FC<TForecastTableProps> = ({
           }}
         />
       ),
+      enableSorting: false,
     }),
     ...(forecastColumns as ColumnDef<TforecastTab, unknown>[]),
     ...dateColumns,
   ]
 
+  //SORTING
+  const [sorting, setSorting] = React.useState<SortingState>([])
+
   const table = useReactTable({
     data,
     columns,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    debugTable: true,
   })
 
   useEffect(() => {
@@ -155,12 +167,28 @@ export const Table: FC<TForecastTableProps> = ({
                   <tr key={headerGroup.id}>
                     {headerGroup.headers.map((header, idx) => (
                       <th key={idx}>
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
+                        {header.isPlaceholder ? null : (
+                          <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={header.column.getToggleSortingHandler()}
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                header.column.getToggleSortingHandler()
+                              }
+                            }}
+                          >
+                            {flexRender(
                               header.column.columnDef.header,
                               header.getContext()
                             )}
+
+                            {{
+                              asc: <SortingASC />,
+                              desc: <SortingDesc />,
+                            }[header.column.getIsSorted() as string] ?? null}
+                          </div>
+                        )}
                       </th>
                     ))}
                   </tr>
