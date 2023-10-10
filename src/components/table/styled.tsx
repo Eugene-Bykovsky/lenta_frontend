@@ -110,7 +110,40 @@ export const TableBox = styled.div`
     background: var(--color-table-Gr-light);
   }
 
-  th,
+  th {
+    transition:
+      // border-radius 2s ease,
+      background-color 1s ease,
+      padding 1s ease,
+      box-shadow 1s ease;
+    padding: 8px;
+    min-width: 156px;
+    max-width: 156px;
+    // border: none;
+  }
+
+  th div {
+    transition:
+      background-color 1s ease,
+      box-shadow 1s ease,
+      border-radius 5s ease;
+    padding: 8px;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: var(--custom-header-shadow);
+      border-radius: 16px;
+    }
+    svg {
+      margin-left: 15px;
+      fill: black; // меняем цвет SVG
+      transform: scale(1.2); // увеличиваем размер SVG
+      transition:
+        transform 0.3s ease,
+        fill 0.3s ease; // добавляем плавность изменения
+    }
+  }
+
   td {
     padding: 8px;
     min-width: 156px;
@@ -130,5 +163,12 @@ export const TableBox = styled.div`
   td:nth-child(10) {
     min-width: 192px;
     max-width: 192px;
+    &:hover {
+      min-width: 220px;
+      // max-width: 192px;
+      cursor: pointer;
+      box-shadow: var(--custom-header-shadow);
+      border-radius: 16px;
+    }
   }
 `
